@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tradcbm</title>
+
+        <link rel="shortcut icon" href="../lib/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="../lib/images/favicon.ico" type="image/x-icon" />
+
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="../lib/css/jquery.dataTables.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="../lib/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../lib/css/sweetalert.css"/>
+
+        <!--JS-->
+        <script   src="../lib/js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script   src="../lib/js/jquery.validate.js" type="text/javascript"></script>
+        <script   src="../lib/js/jquery.dataTables.js" type="text/javascript"></script>
+        <script   src="../lib/js/sweetalert.min.js" type="text/javascript"></script>
+        <script   src="../lib/js/modernizr.js" type="text/javascript"></script>
+        <script   src="../lib/js/bootstrap.js" type="text/javascript"></script>
+        <script   src="../JQuery/JQProveedores/Proveedores.js" type="text/javascript"></script>
+        <script   src="../JQuery/JQProveedores/ProveedoresValidacion.js" type="text/javascript"></script>
+        <script   src="../JQuery/JQProveedores/ProveedoresDatos.js" type="text/javascript"></script>
+        <script>
+            BotonOrigen = localStorage.getItem("BotonOrigen");
+            if (BotonOrigen === "data_editar")
+            {
+                datos.consultar();
+            } else {
+                datos.FormProveedores();
+            };
+        </script>
+    </head>
+    <body>
+        <div id="cabecera"></div>
+        <div  class="container">
+            <div class="container-fluid">
+                <form id="Registrar" name="RegistrarProveedores" method="post"
+                      class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <h1>Proveedores</h1>
+                    <div class="row">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="hidden" id="idproveedor" name="idproveedor" class="cuadrotexto form-control"/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="razonsocial" name="razonsocial" class="cuadrotexto form-control" placeholder="Razón Social"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="codproveedor" name="codproveedor" class="cuadrotexto form-control" placeholder="Código Proveedor"  autofocus/>
+                        </div> 
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="nif" name="nif" class="cuadrotexto form-control" placeholder="NIF"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="personacontacto" name="personacontacto" class="cuadrotexto form-control" placeholder="Persona Contacto"  autofocus/>
+                        </div> 
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="direccion" name="direccion" class="cuadrotexto form-control" placeholder="Dirección"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="ciudad" name="ciudad" class="cuadrotexto form-control" placeholder="Ciudad"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="cp" name="cp" class="cuadrotexto form-control" placeholder="C.P"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="pais" name="pais" class="cuadrotexto form-control" placeholder="País"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="telefono1" name="telefono1" class="cuadrotexto form-control" placeholder="Teléfono"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="telefono2" name="telefono2" class="cuadrotexto form-control" placeholder="Móvil"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="fax" name="fax" class="cuadrotexto form-control" placeholder="Fax"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="email" id="email" name="email" class="cuadrotexto form-control" placeholder="Email"  autofocus/>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" id="web" name="web" class="cuadrotexto form-control" placeholder="Web"  autofocus/>
+                        </div> 
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <textarea rows="4" cols="50" id="descripcion" name="descripcion" form="Registrar" class="cuadrotexto form-control" placeholder="Descripción..."></textarea>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" id="nuevo" value="nuevo" name="nuevo"  class="btn btn-primary col-md-4 col-sm-4 col-xs-4"><i class="fa fa-floppy-o fa-2x"></i></button>
+                            <button type="reset"  id="limpiar" value="limpiar" name="limpiar" onClick="localStorage.setItem('BotonOrigen', 'tblNuevo'); location.href = 'Proveedores.html'" class="btn btn-warning col-md-4 col-sm-4 col-xs-4"><i class="fa fa-eraser fa-2x"></i></button>
+                            <button type="submit" id="listar" name="listar" class="btn btn-info col-md-4 col-sm-4 col-xs-4"><i class="fa fa-list fa-2x"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </body>
+</html>
+
+

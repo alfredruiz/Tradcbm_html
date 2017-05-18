@@ -5,6 +5,7 @@ html {
 body {
     /* Margen para el ancho del pie */
     margin-bottom: 40px;
+    background-image: url(../img/intro.jpg);
 }
 body > .container {
     padding: 50px 0;
@@ -27,42 +28,57 @@ body > .container {
 }
 /*Estilos barra de navegacion header*/
 #brandlink{
-    font-size: 25px;
-    font-weight:bold;
-    color: white;
-}
-#link li a{
+    font-family: verdana;
     font-size: 20px;
     font-weight:bold;
     color: white;
-
 }
-#link li a:hover{
-    color: #9E9A9A;}
-
 #laterallink{
-    font-size: 21px;
+    font-family: verdana;
+    font-size: 16px;
     font-weight:bold;
     color: white;
 }
-#lateralli{
-    font-size:18px;
-    font-weight:bold;
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
 }
-#active{
-    background-color:#605C5C;}
-#active li{
-    color:#3B3737;}
-
+#lateralli{
+    font-size:12px;
+    font-weight:bold;
+    color:black;
+    font-family: arial,verdana;
+}
 /*Estilos formulario index*/
 #ValidaUsuario{
     background-color: #605C5C;
     width: 320px;
-    height: 220px;
+    height: 210px;
     padding: 10px 20px 10px 20px;
     margin: auto;
-    margin-top: 240px;
+    margin-top: 200px;
     border-radius: 5px;
+}
+#inicio{
+    width: 280px;
+    height: 40px;
+}
+#registro{
+    width: 140px;
+    font-family:  Verdana,arial,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #2e6da4;
+    border-radius: 5px;
+    text-decoration: none;
+}
+#sesion{
+    width : 135px;
+    font-family:  Verdana,arial,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color:#2e6da4;
+    border-radius: 5px;
+    text-decoration: none;
 }
 @media(max-width:400px){
     #ValidaUsuario{
@@ -138,6 +154,15 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     border-width: 3px;
     border-color: grey;
 }
+
+.euro {
+    border-style: solid;
+    border-width: 3px;
+    border-color: grey;
+    font-size: 14px;
+    color: #555;
+    margin-left: -100px;
+}
 .spanerror{
     color:red;
 }
@@ -159,6 +184,7 @@ table.dataTable thead th, table.dataTable thead td {
 /*quitar flechas arriba-abajo del sort*/
 table.dataTable thead .sorting{
     background-image: none;
+    color:#FFFFFF;
 }
 table.dataTable thead .sorting_desc {
     background-image: none;
@@ -170,7 +196,7 @@ table.dataTable thead .sorting_asc {
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     background-color: grey;
 }
-/*Animación inicial*/ 
+/*Animación inicial index y portada*/
 .playground {
     width: 100px;
     height: 100px;
@@ -182,6 +208,9 @@ table.dataTable thead .sorting_asc {
     margin-top: 50px;
     margin-left: 190px;
 }
+#target2{
+    margin-left: 230px;
+}
 #usu{
     color: #ffffff;
     margin-bottom: 20px;
@@ -189,5 +218,26 @@ table.dataTable thead .sorting_asc {
     margin-top: 30px;
     font-family: verdana,arial;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 60px;
 }
+#usuindex{
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    font-family: verdana,arial;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+/*Posición del simbolo €*/
+.right-inner-addon #simboloeuro {
+    position: absolute;
+    right: 0px;
+    padding: 7px 30px;
+    pointer-events: none;
+}
+
+
+
+
