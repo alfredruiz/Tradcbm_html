@@ -1,0 +1,51 @@
+
+15/05/17
+- Etas validaciones no sirven para esta aplicacion Validaciones:
+
+
+//Función para validar las peticiones de consultar y eliminar
+validar.validar_Consultar = function() {
+    $('#Registrar').validate({
+        //Reglas de validación para cada input
+        rules: {
+            idusuarios: {required: true}
+        },
+        //mensajes de error de validación para cada input
+        messages: {
+            idusuarios: {required: "Debe escribir un nombre de usuario"}
+        },
+        errorElement: 'span',
+        //Dónde se coloca el mensaje de error
+        errorPlacement: function(error, element) {
+            error.html(error.text()).addClass('spanerror').insertAfter(element).hide().fadeIn();
+        },
+        //Funcionalidad para el botón de envío
+        submitHandler: function() {
+            console.log("validacion de consultar");
+            datos.consultar();
+        }
+    });
+};
+//Función para validar las peticiones de consultar y eliminar
+validar.validar_Borrar = function() {
+    $('#Registrar').validate({
+        //Reglas de validación para cada input
+        rules: {
+            idusuarios: {required: true}
+        },
+        //mensajes de error de validación para cada input
+        messages: {
+            idusuarios: {required: "Debe escribir un nombre de usuario"}
+        },
+        errorElement: 'span',
+        //Dónde se coloca el mensaje de error
+        errorPlacement: function(error, element) {
+            error.html(error.text()).addClass('spanerror').insertAfter(element).hide().fadeIn();
+        },
+        //Funcionalidad para el botón de envío
+        submitHandler: function() {
+            console.log("validacion de borrar");
+            datos.borrar();
+        }
+    });
+};

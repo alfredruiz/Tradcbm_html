@@ -1,56 +1,89 @@
 <header>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mibarra">
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html" id="brandlink">Tradcbm</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mibarra">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html" id="brandlink">Tradcbm</a>
+            </div>
+            <!-- link principales-->
+            <div class="collapse navbar-collapse" id="mibarra">
+                <ul class="nav navbar-nav navar-left" id="laterallink"> 
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Clientes</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">
+                            <li><a href="../Clientes/Clientes.html" onClick="localStorage.setItem('BotonOrigen', 'tblNuevo')">Nuevo Cliente</a></li>
+                            <li><a href="../Clientes/ListadoClientes.html">Listado Clientes</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Proyectos</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">    
+                            <li><a href="../Proyectos/Proyectos.html">Nuevo Proyecto</a></li>
+                            <li><a href="../Proyectos/ListadoProyectos.html">Listado Proyectos</a></li>
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Proveedores</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">    
+                            <li><a href="../Proveedores/Proveedores.html">Nuevo Proveedor</a></li>
+                            <li><a href="../Proveedores/ListadoProveedores.html">Listado Proveedores</a></li>
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Facturas</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">    
+                            <li><a href="../Facturas/Facturas.html">Nueva Factura</a></li>
+                            <li><a href="../Facturas/ListadoFacturas.html">Listado Facturas</a></li>
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Compras</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">    
+                            <li><a href="../Compras/Compras.html">Nueva Compra</a></li>
+                            <li><a href="../Compras/ListadoCompras.html">Listado Compras</a></li>
+                        </ul>
+                    </li>  
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true">
+                          <strong>Impuestos </strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">
+                            <li><a href="../Impuestos/Irpf.html">IRPF</a></li>
+                            <li><a href="../Impuestos/Iva.html">IVA</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- link lateral de login-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" id="laterallink">
+                            <script>
+                                nombrelog = localStorage.getItem("nombre");
+                                $("#usuario").append("Bienvenido: " + nombrelog);
+                            </script>
+                            <strong id="usuario"></strong>
+                            <strong>Login </strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">
+                            <li><a href="../Usuarios/Usuarios.html" id="MisDatos" onClick="localStorage.setItem('BotonOrigen', 'MisDatos')">Mis Datos</a></li>
+                            <li><a href="../Usuarios/ListadoUsuarios.html">Listado</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="../index.html" id="cerrarSesion">Salir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- link principales-->
-        <div class="collapse navbar-collapse" id="mibarra">
-            <ul class="nav navbar-nav" id="link">
-                <li id="active"><a href="clientes/Clientes.html">Clientes</a></li>
-                <li><a href="Proyectos.html">Proyectos</a></li>
-                <li><a href="Facturas.html">Facturas</a></li>
-                <li><a href="Proveedores.html">Proveedores</a></li>
-                <li><a href="Compras.html">Compras</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true"
-                       id="laterallink"><strong>Impuestos </strong><span class="caret"></span></a>
-                    <ul class="dropdown-menu text-center" id="lateralli">
-                        <li><a href="Irpf.html">IRPF</a></li>
-                        <li><a href="Iva.html">IVA</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- link lateral de login-->
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" id="laterallink">
-                      <script>
-                           nombrelog = localStorage.getItem("nombre");                        
-                           $("#usuario").append("Bienvenido: " + nombrelog);
-                        </script> 
-                        <strong id="usuario"></strong>  
-                        <strong>Login </strong><span class="caret"></span></a>
-                    <ul class="dropdown-menu text-center" id="lateralli">
-                        <li><a href="Usuarios.html">Registrarse</a></li>                     
-                        <li><a href="index.html">Ingresar</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="index.html">Salir</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
 </header>

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clases;
-
-/**
- *
- * @author Ana
- */
+ 
 public class Clientes {
     
      private int idcliente;
@@ -20,6 +11,7 @@ public class Clientes {
      private String direccion;
      private String ciudad;
      private String cp;
+     private String pais;
      private String telefono1;
      private String telefono2;
      private String fax;
@@ -28,7 +20,7 @@ public class Clientes {
      private String cuentapago;
      private String observaciones;
 
-    public Clientes(int idcliente, String codcliente, String razonsocial, String personacontacto, String cargo, String nif, String direccion, String ciudad, String cp, String telefono1, String telefono2, String fax, String email, String web, String cuentapago, String observaciones) {
+    public Clientes(int idcliente, String codcliente, String razonsocial, String personacontacto, String cargo, String nif, String direccion, String ciudad, String cp, String pais, String telefono1, String telefono2, String fax, String email, String web, String cuentapago, String observaciones) {
         this.idcliente = idcliente;
         this.codcliente = codcliente;
         this.razonsocial = razonsocial;
@@ -38,6 +30,7 @@ public class Clientes {
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.cp = cp;
+        this.pais = pais;
         this.telefono1 = telefono1;
         this.telefono2 = telefono2;
         this.fax = fax;
@@ -46,7 +39,10 @@ public class Clientes {
         this.cuentapago = cuentapago;
         this.observaciones = observaciones;
     }
-    public Clientes(){}
+
+    public Clientes() {
+    }
+
     public int getIdcliente() {
         return idcliente;
     }
@@ -119,6 +115,14 @@ public class Clientes {
         this.cp = cp;
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
     public String getTelefono1() {
         return telefono1;
     }
@@ -174,6 +178,7 @@ public class Clientes {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-     
+
+ 
      
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tradcbm</title>
+        <link rel="shortcut icon" href="../lib/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="../lib/images/favicon.ico" type="image/x-icon" />
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="../lib/css/jquery.dataTables.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="../lib/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../lib/css/sweetalert.css"/>
+
+        <!--JS-->
+        <script   src="../lib/js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script   src="../lib/js/jquery.validate.js" type="text/javascript"></script>
+        <script   src="../lib/js/jquery.dataTables.js" type="text/javascript"></script>
+        <script   src="../lib/js/sweetalert.min.js" type="text/javascript"></script>
+        <script   src="../lib/js/modernizr.js" type="text/javascript"></script>
+        <script   src="../lib/js/bootstrap.js" type="text/javascript"></script>
+        <script   src="../JQuery/JQCompras/Compras.js" type="text/javascript"></script>
+        <script   src="../JQuery/JQCompras/ComprasValidacion.js" type="text/javascript"></script>
+        <script   src="../JQuery/JQCompras/ComprasDatos.js" type="text/javascript"></script>
+        <script>
+            datos.listar();
+        </script>
+    </head>
+    <body>
+        <div id="cabecera"></div>
+
+        <!--Tabla de Usuarios-->
+        <div class="table-responsive" id="listado">
+            <h1 id="cabeceratabla" class="text-center">Listado Compras</h1>
+            <table id="tabla" class="display">
+                <thead>
+                    <tr>
+                        <th>
+                            <button type="submit" id="tblNuevo" class="btn btn-success text-center">
+                                <i class="fa fa-plus"></i> Nuevo</button>
+                        </th>
+                        <th></th>
+                        <th>Id. Compras</th>
+                        <th>Id. Proveedor</th>
+                        <th>Num. Factura</th>
+                        <th>Concepto</th>
+                        <th>Fecha</th>
+                        <th>Base factura</th>
+                        <th>Tipo IVA</th>
+                        <th>Amortización</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="footer"></div>
+
+    </body>
+</html>
