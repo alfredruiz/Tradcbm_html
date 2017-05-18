@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,23 +15,43 @@
         <link rel="stylesheet" type="text/css" href="lib/css/sweetalert.css">
 
         <!--JS-->
-        <script   src="lib/js/jquery-3.1.1.js"></script>
-        <script   src="lib/js/jquery.validate.js"></script>
-        <script   src="lib/js/jquery.dataTables.js"></script>
-        <script   src="lib/js/sweetalert.min.js"></script>
-        <script   src="lib/js/modernizr.js"></script>
-        <script   src="lib/js/bootstrap.js"></script>
-        <script   src="lib/jquery/JQUsuarios.js"></script>
-        <script src="lib/jquery/Login.js"></script>
+        <script   src="lib/js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script   src="lib/js/jquery.validate.js" type="text/javascript"></script>
+        <script   src="lib/js/jquery.dataTables.js" type="text/javascript"></script>
+        <script   src="lib/js/sweetalert.min.js" type="text/javascript"></script>
+        <script   src="lib/js/modernizr.js" type="text/javascript"></script>
+        <script   src="lib/js/bootstrap.js" type="text/javascript"></script>
+        <script   src="JQuery/JQUsuarios/Usuarios.js" type="text/javascript"></script>
+        <script   src="JQuery/JQUsuarios/Login.js" type="text/javascript"></script>
+
+        <script>
+            localStorage.removeItem("perfil");
+            localStorage.removeItem("nombre");
+            localStorage.removeItem("idusuario");
+
+            perfil = localStorage.getItem("perfil");
+            nombre = localStorage.getItem("nombre");
+            idusuario = localStorage.getItem("idusuario");
+            console.log("perfil -->" + perfil + " nombre -->" + nombre + " idusuario -->" + idusuario);
+
+        </script>
+
     </head>
     <body>
-         <div  class="container">  
-           <form id="ValidaUsuario" name="ValidaUsuario" method="post">
-                <h2>Ingresar</h2>
+        <div  class="container">
+            <div id="target2" class="playground">
+                <div id="usuindex" class="text-center"></div>
+            </div>
+
+            <form id="ValidaUsuario" name="ValidaUsuario" method="post">
+                <h2>Acceder</h2>
                 <input type="text" id="idusuarios" name="idusuarios"  class="form-control" placeholder="Usuario">
                 <input type="password" id="password" name="password"  class="form-control" placeholder="Password">
 
-                <button class="btn btn-lg btn-danger btn-block" name="ingresar" id="ingresar">Entrar</button>
+                <div class="form-horizontal" id="inicio">
+                    <button class="btn btn btn-primary col-sm-6" name="registrarse" id="registrarse">Regístrese</button>
+                    <button class="btn btn btn-danger col-sm-6" name="ingresar" id="ingresar">Iniciar sesión</button>
+                </div>
             </form>
         </div>
     </body>

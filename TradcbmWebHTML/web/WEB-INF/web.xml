@@ -1,16 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <display-name>Tradcbm</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>SvUsuarios</servlet-name>
         <servlet-class>servlets.SvUsuarios</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SvCompras</servlet-name>
+        <servlet-class>servlets.SvCompras</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvClientes</servlet-name>
+        <servlet-class>servlets.SvClientes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvProveedores</servlet-name>
+        <servlet-class>servlets.SvProveedores</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvUsuarios</servlet-name>
         <url-pattern>/SvUsuarios</url-pattern>
+        <url-pattern>/Usuarios/SvUsuarios</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvCompras</servlet-name>
+        <url-pattern>/SvCompras</url-pattern>
+        <url-pattern>/Compras/SvCompras</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvClientes</servlet-name>
+        <url-pattern>/SvClientes</url-pattern>
+        <url-pattern>/Clientes/SvClientes</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>SvProveedores</servlet-name>
+        <url-pattern>/SvProveedores</url-pattern>
+        <url-pattern>/Proveedores/SvProveedores</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <!-- Configuración de códigos de Error 400 y Error 500-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/Usuarios/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/Usuarios/500.html</location>
+    </error-page>
 </web-app>

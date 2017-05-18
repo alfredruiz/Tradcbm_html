@@ -1,4 +1,4 @@
-<header>   
+<header>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -10,34 +10,48 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" id="brandlink">Tradcbm</a>
+                <a class="navbar-brand" href="../index.html" id="brandlink">Tradcbm</a>
             </div>
             <!-- link principales-->
             <div class="collapse navbar-collapse" id="mibarra">
-                <ul class="nav navbar-nav" id="link">                     
-                    <li><a href="Proyectos.html">Proyectos</a></li>               
-                    <li><a href="Facturas.html">Facturas</a></li>   
-               </ul>      
+                  <ul class="nav navbar-nav navar-left" id="laterallink"> 
+                   <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Proyectos</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">    
+                            <li><a href="../Proyectos/Proyectos.html">Nuevo Proyecto</a></li>
+                            <li><a href="../Proyectos/ListadoProyectos.html">Listado Proyectos</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            <strong>Facturas</strong><span class="caret"></span></a>
+                        <ul class="dropdown-menu text-center" id="lateralli">    
+                            <li><a href="../Facturas/Facturas.html">Nueva Factura</a></li>
+                            <li><a href="../Facturas/ListadoFacturas.html">Listado Facturas</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <!-- link lateral de login-->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                            role="button" aria-haspopup="true" id="laterallink">
-                           <script>
-                           nombrelog = localStorage.getItem("nombre");
-                           $("#usuario").append("Bienvenido: " + nombrelog);
-                           </script> 
-                           <strong id="usuario"></strong> 
-                           <strong>Login </strong><span class="caret"></span></a>
+                            <script>
+                                nombrelog = localStorage.getItem("nombre");
+                                $("#usuario").append("Bienvenido: " + nombrelog);
+                            </script>
+                            <strong id="usuario"></strong>
+                            <strong>Login </strong><span class="caret"></span></a>
                         <ul class="dropdown-menu text-center" id="lateralli">
-                            <li><a href="Usuarios.html">Registrarse</a></li>
-                            <li><a href="index.html">Ingresar</a></li>            	
+                            <li><a href="../Usuarios/Usuarios.html" id="MisDatos" onClick="localStorage.setItem('BotonOrigen', 'MisDatos')">Mis Datos</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="index.html">Salir</a></li> 
+                            <li><a href="../index.html" id="cerrarSesion">Salir</a></li>
+
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-</header> 
+</header>

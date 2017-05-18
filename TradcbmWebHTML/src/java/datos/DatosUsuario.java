@@ -118,8 +118,8 @@ public class DatosUsuario {
         ArrayList<Usuarios> listausu = new ArrayList<>(); 
         try {
 
-            String sql = "select * from usuarios";
-            pst = con.prepareStatement(sql);
+            mysql = "select * from usuarios";
+            pst = con.prepareStatement(mysql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 usu = new Usuarios();
