@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import Utilidades.Utilidades;
 import clases.Compras;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,7 +43,7 @@ public class SvCompras extends HttpServlet {
             int IDProveedor = Integer.parseInt(request.getParameter("idproveedor"));
             String NumFactura = request.getParameter("numfactura");
             String Concepto = request.getParameter("concepto");
-            Date Fecha = Utilidades.Utilidades.strintToDate(request.getParameter("fecha"));
+            Date Fecha = Utilidades.stringToDate(request.getParameter("fecha"));
             Double BaseFactura = Double.parseDouble(request.getParameter("basefactura"));
             Double TipoIVA = Double.parseDouble(request.getParameter("tipoiva"));
             String Amortizacion = request.getParameter("amortizacion");
@@ -76,7 +77,6 @@ public class SvCompras extends HttpServlet {
                 }
                 case "consultar": {
                     misDatos = new DatosCompras();
-//                    Gson gson = new Gson();
                     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
                     String Json = gson.toJson(misDatos.getCompras(IDCompras));
                     out.print(Json);
@@ -85,13 +85,14 @@ public class SvCompras extends HttpServlet {
                 case "listar": {
                     misDatos = new DatosCompras();
                     Gson gson = new Gson();
-                    String Json = gson.toJson(misDatos.getAllCompras());
-
+                    String Json = gson.toJson(misDatos.getAllComprasProveedores());
                     out.print(Json);
                     break;
                 }
                 default:
             }
+        } catch (Exception ex) {
+            ex.getMessage();
         }
     }
 

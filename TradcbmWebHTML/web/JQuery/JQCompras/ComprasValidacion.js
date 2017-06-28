@@ -6,16 +6,18 @@ validar.validar_nuevo = function() {
     $('#Registrar').validate({
         //Reglas de validación para cada input
         rules: {
-//            idproveedor: {selectcheck: true},
+            cmbProveedor: {required: true},
+            numfactura: {required: true},
             concepto: {required: true},
             fecha: {required: true},
             basefactura: {required: true},
-            tipoiva: {selectcheck: true},
-            amortizacion: {selectcheck: true}
+            tipoiva: {required: true},
+            amortizacion: {required: true}
         },
         //mensajes de error de validación para cada input
         messages: {
-//            idproveedor: {required: "Debe seleccionar un proveedor"},
+            cmbProveedor: {required: "Debe seleccionar un proveedor"},
+            numfactura: {required: "Debe ingresar un número de factura"},
             concepto: {required: "Debe escribir un concepto"},
             fecha: {required: "Debe especificar una fecha"},
             basefactura: {required: "Debe especificar la base de la factura"},
@@ -41,17 +43,19 @@ validar.validar_nuevo = function() {
 validar.validar_modificar = function() {
     $('#Registrar').validate({
         //Reglas de validación para cada input
-        rules: {
-            idproveedor: {selectcheck: true},
+         rules: {
+            cmbProveedor: {required: true},
+            numfactura: {required: true},
             concepto: {required: true},
             fecha: {required: true},
             basefactura: {required: true},
-            tipoiva: {selectcheck: true},
-            amortizacion: {selectcheck: true}
+            tipoiva: {required: true},
+            amortizacion: {required: true}
         },
         //mensajes de error de validación para cada input
         messages: {
-            idproveedor: {required: "Debe seleccionar un proveedor"},
+            cmbProveedor: {required: "Debe seleccionar un proveedor"},
+            numfactura: {required: "Debe ingresar un número de factura"},
             concepto: {required: "Debe escribir un concepto"},
             fecha: {required: "Debe especificar una fecha"},
             basefactura: {required: "Debe especificar la base de la factura"},

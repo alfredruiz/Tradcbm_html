@@ -6,6 +6,7 @@ body {
     /* Margen para el ancho del pie */
     margin-bottom: 40px;
     background-image: url(../img/intro.jpg);
+
 }
 body > .container {
     padding: 50px 0;
@@ -95,7 +96,7 @@ form h2{
 #Registrar{
     background-color:#777;
     border-radius: 5px;
-    margin-top: 60px;
+    margin-top: 50px;
     padding-right: 15px;
 }
 #Registrar h1{
@@ -171,7 +172,7 @@ button, input, optgroup, select, textarea{
 }
 /*tabla listado*/
 #listado{
-    margin-top:40px;
+    margin-top:80px;
 }
 /*quitar linea de cabecera y pie*/
 table.dataTable.no-footer{
@@ -185,6 +186,9 @@ table.dataTable thead th, table.dataTable thead td {
 table.dataTable thead .sorting{
     background-image: none;
     color:#FFFFFF;
+}
+td.sorting_1 button{
+    margin-left: 4px;
 }
 table.dataTable thead .sorting_desc {
     background-image: none;
@@ -200,7 +204,6 @@ table.dataTable thead .sorting_asc {
 .playground {
     width: 100px;
     height: 100px;
-    /*  background-color: #020000;*/
     padding: 10px;
     padding-top:40px;
 }
@@ -230,7 +233,7 @@ table.dataTable thead .sorting_asc {
     font-size: 60px;
 }
 
-/*Posición del simbolo €*/
+
 .right-inner-addon #simboloeuro {
     position: absolute;
     right: 0px;
@@ -238,6 +241,31 @@ table.dataTable thead .sorting_asc {
     pointer-events: none;
 }
 
+.bgtransparent{
+    position:fixed;
+    left:0;
+    top:0;
+    background-color:#000;
+    opacity:0.6;
+    filter:alpha(opacity=60);
+}
 
+#tabla2_filter, #tabla2_length, #tabla2_info{
+    display:none;
+}
 
+/*Dar formato a los title de los input*/
+.tooltip {
+    background-color:grey;
+    border:1px solid #fff;
+    padding:10px 15px;
+    width:200px;
+    display:none;
+    color:white;
+    text-align:left;
+    font-size:14px;
 
+    /* outline radius for mozilla/firefox only */
+    -moz-box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 0 10px #000;
+}

@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $('#registrarse').click(function(e) { 
         e.preventDefault(); 
-        location.href = "Usuarios/Usuarios.html";  
+        location.href = "HTML/Usuarios/Usuarios.html";  
     });
  
     $('#MisDatos').on("click", (function() {

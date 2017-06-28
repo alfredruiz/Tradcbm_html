@@ -16,22 +16,57 @@
         <servlet-name>SvClientes</servlet-name>
         <servlet-class>servlets.SvClientes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SvProveedores</servlet-name>
+        <servlet-class>servlets.SvProveedores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvFacturas</servlet-name>
+        <servlet-class>servlets.SvFacturas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvProyectos</servlet-name>
+        <servlet-class>servlets.SvProyectos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvFacturas_Proyectos</servlet-name>
+        <servlet-class>servlets.SvFacturas_Proyectos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvUsuarios</servlet-name>
         <url-pattern>/SvUsuarios</url-pattern>
-        <url-pattern>/Usuarios/SvUsuarios</url-pattern>
+        <url-pattern>/HTML/Usuarios/SvUsuarios</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SvCompras</servlet-name>
         <url-pattern>/SvCompras</url-pattern>
-        <url-pattern>/Compras/SvCompras</url-pattern>
+        <url-pattern>/HTML/Compras/SvCompras</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SvClientes</servlet-name>
         <url-pattern>/SvClientes</url-pattern>
-        <url-pattern>/Clientes/SvClientes</url-pattern>
+        <url-pattern>/HTML/Clientes/SvClientes</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>SvProveedores</servlet-name>
+        <url-pattern>/SvProveedores</url-pattern>
+        <url-pattern>/HTML/Proveedores/SvProveedores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvProyectos</servlet-name>
+        <url-pattern>/SvProyectos</url-pattern>
+        <url-pattern>/HTML/Proyectos/SvProyectos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvFacturas</servlet-name>
+        <url-pattern>/SvFacturas</url-pattern>
+        <url-pattern>/HTML/Facturas/SvFacturas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvFacturas_Proyectos</servlet-name>
+        <url-pattern>/SvFacturas_Proyectos</url-pattern>
+        <url-pattern>/HTML/Facturas/SvFacturas_Proyectos</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -45,13 +80,5 @@
     <error-page>
         <error-code>500</error-code>
         <location>/500.html</location>
-    </error-page>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/Usuarios/404.html</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/Usuarios/500.html</location>
     </error-page>
 </web-app>

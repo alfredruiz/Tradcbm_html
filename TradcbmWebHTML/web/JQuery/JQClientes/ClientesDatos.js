@@ -1,7 +1,6 @@
 
 var datos = datos || {};
 var BotonOrigen = "";
-//Funcion de dato nuevo usuario
 
 datos.FormClientes = function() {
     BotonOrigen = localStorage.getItem("BotonOrigen");
@@ -29,8 +28,7 @@ datos.FormClientes = function() {
             break;
         case "data_editar":
             console.log(localStorage);
-            datos.consultar();
-            location.href = "Clientes.html";
+            datos.consultar(); 
             break;
         default:
             break;
@@ -180,16 +178,14 @@ datos.listar = function() {
                 myJson = $.parseJSON(data);
                 table = $('#tabla').dataTable({
                     data: myJson,
-                    destroy: true,
-                    scrollY: 300,
-                    scrollX: true,
+                    destroy: true, 
                     columns: [
-                        {'defaultContent':
-                                    "<button type='button' class='editar btn btn-primary'>\n\
-                                        <i class='fa fa-pencil-square-o'></i></button>"},
-                        {'defaultContent':
-                                    "<button type='button' class='eliminar btn btn-danger'>\n\
-                                         <i class='fa fa-trash-o'></i></button>"},
+                        {"defaultContent":
+                                    "<button type='button'  class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button>\n\
+                                     <button type='button'  class='eliminar btn btn-danger'><i class='fa fa-trash'></i></button>\n\
+                                     <button type='submit'  class='info btn btn-info'><i class='fa fa-eye'></i></button>"
+
+                        },
                         {'data': 'idcliente', 'visible': false},
                         {'data': 'codcliente'},
                         {'data': 'razonsocial'},
@@ -199,21 +195,22 @@ datos.listar = function() {
                         {'data': 'direccion'},
                         {'data': 'ciudad'},
                         {'data': 'cp'},
-                        {'data': 'pais', 'defaultContent': ""},
-                        {'data': 'telefono1', 'defaultContent': ""},
-                        {'data': 'telefono2', 'defaultContent': ""},
-                        {'data': 'fax', 'defaultContent': ""},
-                        {'data': 'email'},
-                        {'data': 'web', 'defaultContent': ""},
-                        {'data': 'cuentapago', 'defaultContent': ""},
-                        {'data': 'observaciones', 'defaultContent': ""}
+                        {'data': 'pais','defaultContent': "",'visible': false },
+                        {'data': 'telefono1', 'defaultContent': "" ,'visible': false},
+                        {'data': 'telefono2', 'defaultContent': "",'visible': false },
+                        {'data': 'fax', 'defaultContent': "",'visible': false },
+                        {'data': 'email', 'defaultContent': "",'visible': false },
+                        {'data': 'web', 'defaultContent': "",'visible': false },
+                        {'data': 'cuentapago', 'defaultContent': "",'visible': false },
+                        {'data': 'observaciones', 'defaultContent': "",'visible': false }
                     ],
                     language: Espanol,
-                    lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+                    lengthMenu: [[8, 10, 25, 50, -1], [8, 10, 25, 50, "All"]]
                 });
                 $('#tabla').removeAttr('style');
                 data_editar();
                 data_borrar();
+                data_info();
             });
 };
 var Espanol = {
@@ -255,10 +252,10 @@ function data_editar() {
         localStorage.setItem("idclienteCons", idclienteCons);
 
         datos.FormClientes();
+        location.href = "Clientes.html";
 
     });
-}
-;
+};
 
 function data_borrar() {
 
@@ -286,8 +283,47 @@ function data_borrar() {
                 }
         );
     });
-}
-;
+};
+
+function data_info() {
+    $('#tabla tbody').on('click', 'button.info', function (e) {
+        e.preventDefault();
+        $("#modal").modal();
+        var table = $('#tabla').DataTable();
+        var dato = table.row($(this).parents('tr')).data();
+
+        //Rellenamos las label
+        $('#Modcliente').text('Cliente : ' + dato.codcliente);
+        $('#Modcodcliente ').text('Código Cliente : ' + dato.codcliente);
+        $('#Modrazonsocial').text('Razón Social : ' + dato.razonsocial);
+        $('#Modpersonacontacto').text('Persona Contacto : ' + dato.personacontacto);
+        $('#Modcargo').text('Cargo : ' + dato.cargo);
+        $('#Modnif').text('NIF : ' + dato.nif);
+        $('#Moddireccion').text('Direccion : ' + dato.direccion);
+        $('#Modciudad').text('Ciudad : ' + dato.ciudad);
+        $('#Modcp').text('CP : ' + dato.cp);
+        $('#Modpais').text('País : ' + dato.pais);
+        $('#Modtelefono1').text('Teléfono : ' + dato.telefono1);
+        $('#Modtelefono2').text('Móvil : ' + dato.telefono2);
+        $('#Modfax').text('Fax : ' + dato.fax);
+        $('#Modemail ').text('Email : ' + dato.email);
+        $('#Modweb').text('Web : ' + dato.web);
+        $('#Modcuentapago ').text('Cuenta Pago ' + dato.cuentapago);
+        $('#Modobservaciones').text('Observaciones : ' + dato.observaciones);
+        
+        //Función del botón modal
+        $('#ModEditar').on('click', function () {
+            BotonOrigen = "data_editar";
+            idclienteCons = dato.idcliente;
+
+            localStorage.setItem("BotonOrigen", BotonOrigen);
+            localStorage.setItem("idclienteCons", idclienteCons);
+
+            datos.FormClientes();
+           location.href = "Clientes.html";
+        });
+    });
+};
 
 
 

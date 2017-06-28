@@ -47,24 +47,22 @@ public class DatosCompras {
 
     public boolean nuevaCompra(Compras comp) {
         try {
-            String sql = "Insert into compras (IDCompras,IDProveedor,NumFactura,"
+            mysql = "Insert into compras (IDProveedor,NumFactura,"
                     + "Concepto,Fecha,BaseFactura,TipoIVA,Amortizacion)"
                     + "values(?,?,?,?,?,?,?)";
             pst = con.prepareStatement(mysql);
-            pst.setInt(1, comp.getIDCompras());
-            pst.setInt(2, comp.getIDProveedor());
-            pst.setString(3, comp.getNumFactura());
-            pst.setString(4, comp.getConcepto());
-            pst.setString(5, Utilidades.objectToString(comp.getFecha()));
-            pst.setDouble(6, comp.getBaseFactura());
-            pst.setDouble(7, comp.getTipoIVA());
-            pst.setString(8, comp.getAmortizacion());
+            pst.setInt(1, comp.getIDProveedor());
+            pst.setString(2, comp.getNumFactura());
+            pst.setString(3, comp.getConcepto());
+            pst.setDate(4, Utilidades.DateUtilToDateSql(comp.getFecha()));
+            pst.setDouble(5, comp.getBaseFactura());
+            pst.setDouble(6, comp.getTipoIVA());
+            pst.setString(7, comp.getAmortizacion());
             int co = pst.executeUpdate();
             return co != 0;
         } catch (SQLException e) {
             conex.CerrarConexion();
             Logger.getLogger(DatosCompras.class.getName()).log(Level.SEVERE, null, e);
-
             return false;
         }
     }
@@ -78,7 +76,7 @@ public class DatosCompras {
             pst.setInt(1, comp.getIDProveedor());
             pst.setString(2, comp.getNumFactura());
             pst.setString(3, comp.getConcepto());
-            pst.setString(4, Utilidades.objectToString(comp.getFecha()));
+            pst.setDate(4, Utilidades.DateUtilToDateSql(comp.getFecha()));
             pst.setDouble(5, comp.getBaseFactura());
             pst.setDouble(6, comp.getTipoIVA());
             pst.setString(7, comp.getAmortizacion());
@@ -107,28 +105,36 @@ public class DatosCompras {
         }
     }
 
-    public ArrayList<Compras> getAllCompras() {
+    public ArrayList<Compras> getAllComprasProveedores() {
 
-        ArrayList<Compras> listacomp = new ArrayList<>();
+        ArrayList<Compras> listacomprov = new ArrayList<>();
         try {
-            mysql = "select * from compras";
+            mysql = "select  * from vista_comprasproveedores";
+
             pst = con.prepareStatement(mysql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 comp = new Compras();
+
                 comp.setIDCompras(rs.getInt("IDCompras"));
                 comp.setIDProveedor(rs.getInt("IDProveedor"));
+                comp.setRazonSocial(rs.getString("RazonSocial"));
                 comp.setNumFactura(rs.getString("NumFactura"));
                 comp.setConcepto(rs.getString("Concepto"));
                 comp.setFecha(rs.getDate("Fecha"));
+                comp.setEjercicio(rs.getInt("Ejercicio"));
+                comp.setTrimestre(rs.getInt("Trimestre"));
                 comp.setBaseFactura(rs.getDouble("BaseFactura"));
                 comp.setTipoIVA(rs.getDouble("TipoIVA"));
+                comp.setTotalIVA(rs.getDouble("TotalIVA"));
+                comp.setTotalFactura(rs.getDouble("TotalFactura"));
                 comp.setAmortizacion(rs.getString("Amortizacion"));
-                listacomp.add(comp);
+                listacomprov.add(comp);
             }
             conex.CerrarConexion();
-            return listacomp;
+            return listacomprov;
         } catch (SQLException e) {
+            Logger.getLogger(DatosCompras.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }
     }

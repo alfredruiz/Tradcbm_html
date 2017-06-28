@@ -2,12 +2,7 @@
 var datos = datos || {};
 var BotonOrigen = "";
 
-//tipos de IVA para la consulta
-var ivasuperreduc = 4;
-var ivarreduc = 10;
-var ivanormal = 21;
-//Funcion de dato nuevo usuario
-
+//Funcion de dato nuevo
 datos.FormCompras = function() {
     BotonOrigen = localStorage.getItem("BotonOrigen");
     console.log("BotonOrigen --> " + BotonOrigen);
@@ -15,32 +10,28 @@ datos.FormCompras = function() {
         case "tblNuevo":
             console.log("Caso Nuevo");
             $('#idcompras').val("");
-            $('#idproveedor').val("");
+            $('#cmbProveedor').val("");
             $('#numfactura').val("");
             $('#concepto').val("");
             $('#fecha').val("");
             $('#basefactura').val("");
             $('#tipoiva').val("");
             $('#amortizacion').val("");
-
             break;
         case "data_editar":
             console.log(localStorage);
             datos.consultar();
-            location.href = "Compras.html";
-
             break;
         default:
             break;
     }
-
 };
 
 datos.nuevo = function() {
     console.log("datos de nuevo");
     $.post('SvCompras', {
         idcompras: 0,
-        idproveedor: $('#idproveedor').val(),
+        idproveedor: $('#cmbProveedor').val(),
         numfactura: $('#numfactura').val(),
         concepto: $('#concepto').val(),
         fecha: $('#fecha').val(),
@@ -67,7 +58,7 @@ datos.nuevo = function() {
                         closeOnConfirm: false,
                         showLoaderOnConfirm: true},
                             function() {
-                                location.href = "ListadoCopmras.html";
+                                location.href = "ListadoCompras.html";
                             });
                 }
             });
@@ -87,7 +78,7 @@ datos.modificar = function() {
             function() {
                 $.post('SvCompras', {
                     idcompras: $('#idcompras').val(),
-                    idproveedor: $('#idproveedor').val(),
+                    idproveedor: $('#cmbProveedor').val(),
                     numfactura: $('#numfactura').val(),
                     concepto: $('#concepto').val(),
                     fecha: $('#fecha').val(),
@@ -118,6 +109,7 @@ datos.consultar = function() {
     console.log("BotonOrigen --> " + BotonOrigen);
 
     idcomprasCons = localStorage.getItem("idcomprasCons");
+
     $.post('SvCompras', {
         idcompras: idcomprasCons,
         idproveedor: 0,
@@ -128,24 +120,15 @@ datos.consultar = function() {
                 idcomprasCons = "";
                 myJson = $.parseJSON(respuesta);
                 console.log("myJson -->" + myJson);
-                console.log("myjson.TipoIVA -->" + myJson.TipoIVA);
                 //rellenamos los campos
                 $('#idcompras').val(myJson.IDCompras);
-                $('#idproveedor').val(myJson.IDProveedor);
+                $('#cmbProveedor option').eq(0).val(myJson.IDProveedor).html(myJson.IDProveedor + "</option>");
                 $('#numfactura').val(myJson.NumFactura);
                 $('#concepto').val(myJson.Concepto);
                 $('#fecha').val(myJson.Fecha);
                 $('#basefactura').val(myJson.BaseFactura);
-                //para mostrar un tipo de iva distinto a los definido sen el selector
-                if (myJson.TipoIVA !== ivasuperreduc && myJson.TipoIVA !== ivarreduc && myJson.TipoIVA !== ivanormal) {
-                    $('#tipoiva option').eq(0).val(myJson.TipoIVA).html(myJson.TipoIVA + "% (tipo antiguo)</option>");
-                } else {
-                    $('#tipoiva').val(myJson.TipoIVA);
-                }
-                ;
-                $('#amortizacion').val(myJson.Amortizacion);
-
-
+                $('#tipoiva option').eq(0).val(myJson.TipoIVA).html(myJson.TipoIVA + "%</option>");
+                $('#amortizacion option').eq(0).val(myJson.Amortizacion).html(myJson.Amortizacion + "</option>");
             });
 };
 //******************************************************************************
@@ -161,37 +144,44 @@ datos.listar = function() {
         idproveedor: 0,
         basefactura: 0,
         tipoiva: 0,
+        totaliva: 0,
+        totalfactura: 0,
         dataType: 'json'},
             function(data) {
                 myJson = $.parseJSON(data);
                 console.log("Json --> " + myJson);
+                console.log(data);
+
                 table = $('#tabla').dataTable({
                     data: myJson,
                     destroy: true,
-                    scrollY: 300,
-                    scrollX: true,
                     columns: [
                         {"defaultContent":
-                                    "<button type='button' class='editar btn btn-primary'>\n\
-                                        <i class='fa fa-pencil-square-o'></i></button>"},
-                        {"defaultContent":
-                                    "<button type='button' class='eliminar btn btn-danger'>\n\
-                                         <i class='fa fa-trash-o'></i></button>"},
-                        {'data': 'IDCompras', 'visible': false},
-                        {'data': 'IDProveedor', 'defaultContent': ""},
+                                    "<button type='button'  class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button>\n\
+                                     <button type='button'  class='eliminar btn btn-danger'><i class='fa fa-trash'></i></button>\n\
+                                     <button type='submit'  class='info btn btn-info'><i class='fa fa-eye'></i></button>"
+
+                        },
+                        {'data': 'IDCompras', 'visible': true},
+                        {'data': 'RazonSocial', 'defaultContent': ""},
                         {'data': 'NumFactura', 'defaultContent': ""},
                         {'data': 'Concepto', 'defaultContent': ""},
                         {'data': 'Fecha', 'defaultContent': ""},
+                        {'data': 'Ejercicio', 'defaultContent': ""},
+                        {'data': 'Trimestre', 'defaultContent': ""},
                         {'data': 'BaseFactura', 'defaultContent': ""},
                         {'data': 'TipoIVA', 'defaultContent': ""},
+                        {'data': 'TotalIVA', 'defaultContent': ""},
+                        {'data': 'TotalFactura', 'defaultContent': ""},
                         {'data': 'Amortizacion', 'defaultContent': ""}
                     ],
                     language: Espanol,
-                    lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+                    lengthMenu: [[8, 10, 25, 50, -1], [8, 10, 25, 50, "All"]]
                 });
                 $('#tabla').removeAttr('style');
                 data_editar();
                 data_borrar();
+                data_info();
             });
 };
 
@@ -226,21 +216,25 @@ function data_editar() {
         e.preventDefault();
         var table = $('#tabla').DataTable();
         var dato = table.row($(this).parents('tr')).data();
+
         console.log("clck en boton editar de tabla");
 
         BotonOrigen = "data_editar";
         idcomprasCons = dato.IDCompras;
-        console.log("dato -->" + dato);
-        console.log("dato.idcompras -->" + dato.IDCompras);
-        console.log("dato.tipoiva -->" + dato.TipoIVA);
+        idproveedorCons = dato.IDProveedor;
+        razonsocialCons = dato.RazonSocial;
 
         localStorage.setItem("BotonOrigen", BotonOrigen);
         localStorage.setItem("idcomprasCons", idcomprasCons);
-//        location.href = "Compras.html";
+        localStorage.setItem("idproveedorCons", idproveedorCons);
+        localStorage.setItem("razonsocialCons", razonsocialCons);
+
         datos.FormCompras();
+        location.href = "Compras.html";
     });
 }
 ;
+
 function data_borrar() {
 
     $('#tabla tbody').on('click', 'button.eliminar', function() {
@@ -248,7 +242,7 @@ function data_borrar() {
         var dato = table.row($(this).parents('tr')).data();
         idcompras = $('#idcompras').val(dato.IDCompras);
         swal({
-            title: "Borrar factura de compra de " + dato.DIProveedor,
+            title: "Borrar factura de compra de " + dato.IDProveedor,
             text: "¿Seguro que quiere eliminar esta factura de compra?",
             type: "warning",
             showCancelButton: true,
@@ -258,14 +252,51 @@ function data_borrar() {
         },
                 function() {
                     console.log("clck en boton borrar de tabla");
+                    console.log("dato.idcompras -->" + dato.IDCompras);
                     $.post('SvCompras', {
-                        idusuarios: dato.idcompras,
+                        idcompras: dato.IDCompras,
+                        idproveedor: 0,
+                        basefactura: 0,
+                        tipoiva: 0,
                         opcion: "eliminar"},
                             function() {
                                 datos.listar();
                             });
                 }
         );
+    });
+}
+;
+
+function data_info() {
+    $('#tabla tbody').on('click', 'button.info', function(e) {
+        e.preventDefault();
+        $("#modal").modal();
+        var table = $('#tabla').DataTable();
+        var dato = table.row($(this).parents('tr')).data();
+
+        //Rellenamos las label
+        $('#Modcompra').text('Compra : ' + dato.NumFactura);
+        $('#Modnumfactura').text('Número Factura : ' + dato.NumFactura);
+        $('#Modconcepto').text('Concepto : ' + dato.Concepto);
+        $('#Modfecha').text('Fecha : ' + dato.Fecha);
+        $('#Modbasefactura').text('Base Factura : ' + dato.BaseFactura);
+        $('#Modtipoiva').text('IVA : ' + dato.TipoIva);
+        $('#Modtotaliva').text('Total IVA : ' + dato.TotalIva);
+        $('#Modtotalfactura').text('Total Factura : ' + dato.TotalFactura);
+        $('#Modamortizacion').text('Amortización : ' + dato.Amortizacion);
+
+        //Función del botón modal
+        $('#ModEditar').on('click', function() {
+            BotonOrigen = "data_editar";
+            idcomprasCons = dato.IDCompras;
+
+            localStorage.setItem("BotonOrigen", BotonOrigen);
+            localStorage.setItem("idcomprasCons", idcomprasCons);
+
+            datos.FormCompras();
+            location.href = "Compras.html";
+        });
     });
 }
 ;

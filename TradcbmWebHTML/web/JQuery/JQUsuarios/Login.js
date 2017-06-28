@@ -30,7 +30,7 @@ login.logCorrecto = function() {
     localStorage.setItem("idusuario", myJson.idusuarios);
     localStorage.setItem("nombre", myJson.nombre);
     localStorage.setItem("perfil", myJson.perfil);
-    window.location.href = "Portada/Portada.html"; 
+    window.location.href = "HTML/Portada/Portada.html"; 
 };
 
 login.logIncorrecto = function() {
@@ -49,16 +49,16 @@ login.perfil = function(){
     perfillog = localStorage.getItem("perfil");
     nombrelog = localStorage.getItem("nombre");
     if (perfillog === "Administrador") {
-        $("#cabecera").load('../contenido/header.html'); 
-        $("#footer").load('../contenido/footer.html');
+        $("#cabecera").load('../../contenido/header.html'); 
+        $("#footer").load('../../contenido/footer.html');
         $("#usu").append("Bienvenido: " + nombrelog);
     }
     if (perfillog === "Empleado") {
-        $("#cabecera").load('../contenido/headerempl.html'); 
-        $("#footer").load('../contenido/footer.html');
+        $("#cabecera").load('../../contenido/headerempl.html'); 
+        $("#footer").load('../../contenido/footer.html');
         $("#usu").append("Bienvenido: " + nombrelog);
     } 
     if (perfillog === null) {
-     $("#footer").load('../contenido/footer.html');
+     $("#footer").load('../../contenido/footer.html');
      } 
 };

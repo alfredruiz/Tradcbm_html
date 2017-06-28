@@ -1,12 +1,14 @@
-var login = "";
 var validar = "";
 var datos = "";
 var BotonOrigen = "";
 
 $(document).ready(function() {  
-    $("#cabecera").load('../contenido/header.html'); 
-    $("#footer").load('../contenido/footer.html');
+    $("#cabecera").load('../../contenido/header.html'); 
+    $("#footer").load('../../contenido/footer.html');
+    $("#modal").load('../Clientes/ModalClientes.html');
  
+    datos.FormClientes();
+    
     $('#nuevo').click(function() {
         console.log("clck en boton nuevo");  
         if (BotonOrigen === "tblNuevo") { 

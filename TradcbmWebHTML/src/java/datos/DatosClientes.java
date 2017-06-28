@@ -19,16 +19,16 @@ public class DatosClientes {
     private PreparedStatement pst;
     private Clientes cli;
 
-    public Clientes getCliente(int IdCliente) {
+    public Clientes getCliente(int IDCliente) {
         cli = null;
         try {
-            mysql = "select * from clientes where  IdCliente= ? ";
+            mysql = "select * from clientes where  IDCliente= ? ";
             pst = con.prepareStatement(mysql);
-            pst.setInt(1, IdCliente);
+            pst.setInt(1, IDCliente);
             rs = pst.executeQuery();
             if (rs.next()) {
                 cli = new Clientes(
-                        rs.getInt("IdCliente"), rs.getString("CodCliente"),
+                        rs.getInt("IDCliente"), rs.getString("CodCliente"),
                         rs.getString("RazonSocial"), rs.getString("PersonaContacto"),
                         rs.getString("Cargo"), rs.getString("NIF"), rs.getString("Direccion"),
                         rs.getString("Ciudad"), rs.getString("CP"), rs.getString("Pais"), rs.getString("Telefono1"),
@@ -45,7 +45,7 @@ public class DatosClientes {
 
     public boolean nuevoCliente(Clientes cli) {
         try {
-            mysql = "Insert into clientes(IdCliente,CodCliente,RazonSocial,PersonaContacto,Cargo,NIF,"
+            mysql = "Insert into clientes(IDCliente,CodCliente,RazonSocial,PersonaContacto,Cargo,NIF,"
                     + "Direccion,Ciudad,CP,Pais,Telefono1,Telefono2,Fax,Email,Web,CuentaPago,Observaciones)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(mysql);
             pst.setInt(1, cli.getIdcliente());
@@ -78,7 +78,7 @@ public class DatosClientes {
         try {
             mysql = "UPDATE clientes SET CodCliente= ?, RazonSocial= ?,PersonaContacto= ?, Cargo= ?, NIF= ?, Direccion= ?,"
                     + "Ciudad= ?, CP= ?, Pais= ?, Telefono1= ?,Telefono2= ?, Fax= ?, Email= ?, Web= ?, CuentaPago= ?, Observaciones= ?"
-                    + " WHERE IdCliente = ?";
+                    + " WHERE IDCliente = ?";
             pst = con.prepareStatement(mysql);
             pst.setString(1, cli.getCodcliente());
             pst.setString(2, cli.getRazonsocial());
@@ -108,7 +108,7 @@ public class DatosClientes {
 
     public boolean eliminarCliente(Clientes cli) {
         try {
-            mysql = "delete from clientes where IdCliente = ? ";
+            mysql = "delete from clientes where IDCliente = ? ";
             pst = con.prepareStatement(mysql);
             pst.setInt(1, cli.getIdcliente());
             int clie = pst.executeUpdate();
@@ -131,7 +131,7 @@ public class DatosClientes {
             rs = pst.executeQuery();
             while (rs.next()) {
                 cli = new Clientes();
-                cli.setIdcliente(rs.getInt("IdCliente"));
+                cli.setIdcliente(rs.getInt("IDCliente"));
                 cli.setCodcliente(rs.getString("CodCliente"));
                 cli.setRazonsocial(rs.getString("RazonSocial"));
                 cli.setPersonacontacto(rs.getString("PersonaContacto"));

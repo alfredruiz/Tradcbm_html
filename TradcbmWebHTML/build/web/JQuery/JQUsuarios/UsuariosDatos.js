@@ -64,7 +64,7 @@ datos.nuevo = function() {
                         showLoaderOnConfirm: true},
                             function () {
                                 if (perfil === null) {
-                                    location.href = "../index.html";
+                                    location.href = "../../index.html";
                                 } else {
                                     location.href = "ListadoUsuarios.html";
                                 }

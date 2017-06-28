@@ -1,0 +1,10 @@
+{
+    "amortizacion":  [
+            {"años":  1  , "titulo": "año"},
+            {"años":  2  , "titulo": "años"},
+            {"años":  3  , "titulo": "años"},
+            {"años":  4  , "titulo": "años"},
+            {"años":  5  , "titulo": "años"},
+            {"años":  6  , "titulo": "años"}
+     ] 
+}

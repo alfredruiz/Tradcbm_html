@@ -1,0 +1,8 @@
+ {
+  "tipo":  [
+            {"iva":  0  , "titulo": " % exento"},
+            {"iva":  4  , "titulo": " % superreducido"},
+            {"iva":  10 , "titulo": " % reducido"},
+            {"iva":  21 , "titulo": " % normal"}
+     ] 
+} 
