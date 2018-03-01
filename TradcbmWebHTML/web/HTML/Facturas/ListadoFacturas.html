@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tradcbm</title>
+        
+        <link rel="shortcut icon" href="../../lib/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="../../lib/images/favicon.ico" type="image/x-icon" />
+
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="../../lib/css/jquery.dataTables.css" />
+        <link rel="stylesheet" type="text/css" href="../../lib/css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="../../lib/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../../lib/css/sweetalert.css"/>
+        <link rel="stylesheet" type="text/css" href="../../lib/css/jquery.modal.css" />
+
+        <!--JS-->
+        <script   src="../../lib/js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script   src="../../lib/js/jquery.validate.js" type="text/javascript"></script>
+        <script   src="../../lib/js/jquery.dataTables.js" type="text/javascript"></script>
+        <script   src="../../lib/js/sweetalert.min.js" type="text/javascript"></script>
+        <script   src="../../lib/js/modernizr.js" type="text/javascript"></script>
+        <script   src="../../lib/js/bootstrap.js" type="text/javascript"></script>
+        <script   src="../../lib/js/jquery.modal.js" type="text/javascript"></script>
+
+        <script   src="../../JQuery/JQFacturas/Facturas.js" type="text/javascript"></script>
+        <script   src="../../JQuery/JQFacturas/FacturasValidacion.js" type="text/javascript"></script>
+        <script   src="../../JQuery/JQFacturas/FacturasDatos.js" type="text/javascript"></script>
+        <script   src="../../JQuery/Combos.js" type="text/javascript"></script>
+        <script>
+            datos.listar();
+        </script>
+    </head>
+    <body>
+        <div id="cabecera"></div>
+
+        <!--Tabla de Facturas-->
+        <div class="table-responsive" id="listado">
+            <h1 id="cabeceratabla" class="text-center">Listado Facturas</h1>
+            <table id="tabla" class="display">
+                <thead>
+                    <tr>
+                        <th>
+                            <button type="submit" id="tblNuevo" class="btn btn-success text-center">
+                                <i class="fa fa-plus"></i>Nueva Factura</button>
+                        </th>
+                        <th>IDFactura</th> 
+                        <th>CodFactura</th> 
+                        <th>Cliente</th>
+                        <th>Idioma Factura</th>
+                        <th>Ambito</th>
+                        <th>Fecha</th>
+                        <th>Tipo IVA</th>
+                        <th>IRPF</th>
+                        <th>Descuentos</th>
+                        <th>Vencimientos</th>
+                        <th>Divisa Factura</th> 
+                        <th>IdCliente</th> 
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="footer"></div>
+        <div style="display:none" class="clasemodal" id="modal"></div>
+    </body>
+</html>

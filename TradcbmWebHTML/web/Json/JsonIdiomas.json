@@ -1,0 +1,20 @@
+{
+    "idiomas": [
+        {
+            "cod": "ESP",
+            "nombre": "Español"
+        },
+        {
+            "cod": "FRA",
+            "nombre": "Francés"
+        },
+        {
+            "cod": "ENG",
+            "nombre": "Inglés"
+        },
+        {
+            "cod": "CAT",
+            "nombre": "Catalán"
+        }
+    ]
+}
